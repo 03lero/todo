@@ -1,4 +1,5 @@
 import React from 'react';
+import Fetti from './confetti'
 
 const Todo = ({ text, todo, todos, setTodos }) => {
   const deleteHandler = () => {
@@ -11,11 +12,16 @@ const Todo = ({ text, todo, todos, setTodos }) => {
         return item
       };
       return item;
-    }
-    ));
+    }));
   };
+  const confetti = () => {
+    if(todo.completed) {
+      return <Fetti/>;
+    }
+  }
   return(
-    <div className="todo">
+    <div className="todo" style={{ borderStyle:'solid', borderColor:'#FF6F47'}}>
+      {confetti()}
       <li className={`todo-item ${todo.completed ? "completed" : ""}`}>{text}</li>
       <button onClick={completeHandler} className="complete-btn">
         <i className="fas fa-check">
