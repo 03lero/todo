@@ -20,7 +20,7 @@ const Todo = ({ text, todo, todos, setTodos }) => {
     }
   }
   return(
-    <div className="todo" style={{ borderStyle:'solid', borderColor:'#FF6F47'}}>
+    <div className="todo">
       {confetti()}
       <li className={`todo-item ${todo.completed ? "completed" : ""}`}>{text}</li>
       <button onClick={completeHandler} className="complete-btn">

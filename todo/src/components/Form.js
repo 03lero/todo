@@ -17,13 +17,15 @@ const Form = ({ inputText, todos, setTodos, setInputText, setStatus }) => {
 
   return (
     <form style={{ paddingTop:'20px'}}>
-      <div className="userinput">
-      <input onChange={inputTextHandler} value={inputText} type="text" className="todo-input" style={{ borderStyle:'solid', borderColor:'#FF6F47'}} />
-        <button className="todo-button" onClick={submitTodoHandler} type="submit" style={{ borderStyle:'solid', borderColor:'#FF6F47', borderLeft:'0'}}>
-          <i className="fas fa-plus-square"></i>
-        </button>
+    <div className="inputContainer">
+        <div className="userinput">
+          <input onChange={inputTextHandler} value={inputText} type="text" className="todo-input" />
+          <button className="todo-button" onClick={submitTodoHandler} type="submit" >
+            <i className="fas fa-plus-square"></i>
+          </button>
+        </div>
       </div>
-      <div className="select" style={{borderStyle:'solid', borderColor:'#FF6F47'}}>
+      <div className="select" >
         <select onChange={statusHandler} name="todos" className="filter-todo">
           <option value="all">All</option>
           <option value="completed">Completed</option>
