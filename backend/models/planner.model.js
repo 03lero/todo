@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 
 const plannerSchema = new Schema({
   username: { type: String, required: true },
-  description: { type: String, required: true },
+  text: { type: String, required: true },
+  completed: {type: Boolean, required: true},
   date: { type: Date, required: true },
 }, {
   timestamps: true,

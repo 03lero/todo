@@ -9,7 +9,8 @@ router.route('/').get((req, res) => {
 
 router.route('/add').post((req, res) => {
   const username = req.body.username;
-  const description = req.body.description;
+  const text = req.body.text;
+  const completed = req.body.completed;
   const date = Date.parse(req.body.date);
 
   const newPlanner = new Planner({
@@ -24,13 +25,13 @@ router.route('/add').post((req, res) => {
 });
 
 router.route('/:id').get((req, res) => {
-  Exercise.findById(req.params.id)
+  Planner.findById(req.params.id)
     .then(planner => res.json(planner))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
 router.route('/:id').delete((req, res) => {
-  Exercise.findByIdAndDelete(req.params.id)
+  Planner.findByIdAndDelete(req.params.id)
     .then(() => res.json('Plan deleted.'))
     .catch(err => res.status(400).json('Error: ' + err));
 });
@@ -39,7 +40,8 @@ router.route('/update/:id').post((req, res) => {
   Planner.findById(req.params.id)
     .then(planner => {
       planner.username = req.body.username;
-      planner.description = req.body.description;
+      planner.text = req.body.text;
+      planner.completed = req.body.completed;
       planner.date = Date.parse(req.body.date);
 
       planner.save()
